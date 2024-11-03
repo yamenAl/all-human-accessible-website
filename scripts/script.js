@@ -1,22 +1,4 @@
 
-// Function to duplicate the existing photos
-function duplicatePhotos() {
-  const photos = document.querySelectorAll('#photo-grid img');
-  photos.forEach(photo => {
-    const clone = photo.cloneNode(true); // Clone each photo
-    grid.appendChild(clone); // Add the clone to the grid
-  });
-}
-
-// Infinite scroll functionality
-scrollContainer.addEventListener('scroll', () => {
-  const nearBottom = scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 100;
-  const nearRight = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 100;
-
-  if (nearBottom || nearRight) {
-    duplicatePhotos(); // Duplicate photos when nearing the bottom or right edge
-  }
-});
 
 
 function approach1Fn(className) {
@@ -35,3 +17,47 @@ function showFn() {
       box.style.display = 'block';
   });
 }
+
+
+const scrollContainer = document.querySelector('.scroll-container');
+const grid = document.querySelector('.grid');
+let isDragging = false;
+let startX, startY;
+let scrollLeft, scrollTop;
+// Function to duplicate the images for infinite effect
+function duplicateImages() {
+  const images = document.querySelectorAll('.grid img');
+  images.forEach(image => {
+    const clone = image.cloneNode(true);
+    grid.appendChild(clone);
+  });
+}
+// Duplicate images multiple times to ensure smooth infinite scrolling
+for (let i = 0; i < 10; i++) {
+  duplicateImages();
+}
+// Drag to scroll functionality
+scrollContainer.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.pageX - scrollContainer.offsetLeft;
+  startY = e.pageY - scrollContainer.offsetTop;
+  scrollLeft = scrollContainer.scrollLeft;
+  scrollTop = scrollContainer.scrollTop;
+  e.preventDefault(); // Prevent text selection
+});
+scrollContainer.addEventListener('mouseleave', () => {
+  isDragging = false;
+});
+scrollContainer.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+scrollContainer.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - scrollContainer.offsetLeft;
+  const y = e.pageY - scrollContainer.offsetTop;
+  const walkX = (x - startX) * 2; // Increase scroll speed by multiplying the difference
+  const walkY = (y - startY) * 2;
+  scrollContainer.scrollLeft = scrollLeft - walkX;
+  scrollContainer.scrollTop = scrollTop - walkY;
+});

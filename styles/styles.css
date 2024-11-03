@@ -55,9 +55,11 @@ li {
 }
 
 img {
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
+  border-radius: 8px;
+
 }
 .logo {
   max-width: 30vh;
@@ -90,26 +92,26 @@ li:nth-of-type(9n) {
 
 .topbar {
   display: flex;
-  justify-content: space-between; /* Spread the logo and nav links */
-  align-items: center; /* Vertically center the content */
+  justify-content: space-between; 
+  align-items: center; 
   padding: 1em;
   background-color: white;
   width: 100%;
-  height: auto; /* Make sure it adjusts height automatically */
-  transition: all 0.3s ease; /* Smooth transition on resize */
+  height: auto; 
+  transition: all 0.3s ease; 
 }
 
 /* Logo styling */
 .logo {
-  max-width: 30vh; /* Make it responsive */
+  max-width: 30vh; 
   height: auto;
   margin-right: 1em;
 }
 
-/* Navigation links styling */
+
 .nav-links {
   display: flex;
-  gap: 20px; /* Space between nav items */
+  gap: 20px; 
 }
 
 .nav-links a {
@@ -119,7 +121,7 @@ li:nth-of-type(9n) {
   padding: 10px;
 }
 
-/* Highlight specific link */
+
 .nav-links a.highlight {
   background-color: yellow;
   padding: 10px 15px;
@@ -127,7 +129,7 @@ li:nth-of-type(9n) {
   border: 2px solid black;
 }
 
-/* Right-side nav and dropdown */
+
 .right-nav {
   display: flex;
   gap: 15px;
@@ -153,7 +155,7 @@ li:nth-of-type(9n) {
 
 
 footer {
-  background-color: rgba(133, 30, 30, 0); 
+  background-color: rgba(0, 0, 0, 0); 
   position: fixed;
   bottom: 0;
   left: 50%;
@@ -220,6 +222,10 @@ footer {
     max-height: 15vh;
     
   }
+  .nav-links{
+    display: none;
+  }
+
 
 }
 @media (max-width: 350px) {
@@ -233,39 +239,15 @@ footer {
 }
 
 
-/* General page settings */
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-}
 
 
-
-/* Scrollable container for the photo grid */
-.scroll-container {
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
-  overflow: auto; /* Enable both vertical and horizontal scrolling */
-  cursor: grab; /* Show grab cursor */
-}
 
 /* Flexbox grid to arrange the photos */
 .grid {
   display: flex;
   flex-wrap: wrap; /* Allow the photos to wrap into multiple rows */
-  gap: 10px; /* Space between the images */
+  gap: 1px; /* Space between the images */
   padding: 10px;
-}
-
-/* Style each image */
-.grid img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover; /* Ensure images fit inside their containers */
-  border-radius: 8px;
 }
 
 /* When dragging, show grabbing cursor */
