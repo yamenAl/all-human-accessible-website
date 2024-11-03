@@ -1,0 +1,274 @@
+* {
+	box-sizing:border-box;	
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height:100vh;
+  width: 100%;
+	margin:0;
+	
+	display:grid;
+  gap: 1em;
+}
+header{
+  display: grid;
+  background-color: white;
+  max-height: 12vh;
+  grid-row: 1;
+  grid-column: span 2;
+}
+
+main {
+  width: 100%;
+  min-height: 90vh;
+	position:relative;
+	overflow:auto;
+  grid-row: 2;
+  grid-column: span 2;
+ 
+}
+
+
+ul {	
+  display: grid;
+	margin: 0px;
+	padding: 1em;
+  list-style:none;
+  position:absolute;
+	background-color:#fff;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 2px;
+}
+
+li {
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  scroll-snap-align: center;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio:var(--aspect-ratio);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.logo {
+  max-width: 30vh;
+  margin: 1em;
+  margin-bottom: 0;
+  float: left;
+ 
+}
+
+
+
+ul.photo-list li:hover img {
+  transform: scale(2); 
+  z-index: 10; 
+}
+
+
+li:nth-of-type(2n) {
+  --aspect-ratio:0.5;
+}
+
+li:nth-of-type(5n) {
+  --aspect-ratio:1.3;
+
+	
+}
+li:nth-of-type(9n) {
+	--aspect-ratio:2.5;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between; /* Spread the logo and nav links */
+  align-items: center; /* Vertically center the content */
+  padding: 1em;
+  background-color: white;
+  width: 100%;
+  height: auto; /* Make sure it adjusts height automatically */
+  transition: all 0.3s ease; /* Smooth transition on resize */
+}
+
+/* Logo styling */
+.logo {
+  max-width: 30vh; /* Make it responsive */
+  height: auto;
+  margin-right: 1em;
+}
+
+/* Navigation links styling */
+.nav-links {
+  display: flex;
+  gap: 20px; /* Space between nav items */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* Highlight specific link */
+.nav-links a.highlight {
+  background-color: yellow;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid black;
+}
+
+/* Right-side nav and dropdown */
+.right-nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+footer {
+  background-color: rgba(133, 30, 30, 0); 
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  grid-row: 3;
+  grid-column: span 2;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 10; 
+}
+
+
+.footer-filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-filters button {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(71, 67, 67);
+  transition: background-color 0.3s ease;
+}
+
+.footer-filters a:hover {
+  background-color: #ffea00;
+}
+
+.footer-search {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-search input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  font-size: 16px;
+}
+
+
+.footer-search button {
+  padding: 15px 30px;
+  border: none; 
+  font-size: 17px;
+  float: left;
+ 
+  background: #ffffff;
+  
+  
+}
+
+@media (max-width: 480px) {
+  body > header{
+    max-height: 15vh;
+    
+  }
+
+}
+@media (max-width: 350px) {
+  ul{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+}
+#myDIV {
+  text-align: center;
+}
+
+
+/* General page settings */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+/* Scrollable container for the photo grid */
+.scroll-container {
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  overflow: auto; /* Enable both vertical and horizontal scrolling */
+  cursor: grab; /* Show grab cursor */
+}
+
+/* Flexbox grid to arrange the photos */
+.grid {
+  display: flex;
+  flex-wrap: wrap; /* Allow the photos to wrap into multiple rows */
+  gap: 10px; /* Space between the images */
+  padding: 10px;
+}
+
+/* Style each image */
+.grid img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; /* Ensure images fit inside their containers */
+  border-radius: 8px;
+}
+
+/* When dragging, show grabbing cursor */
+.scroll-container.grabbing {
+  cursor: grabbing;
+}
